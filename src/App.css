@@ -1,38 +1,136 @@
 .App {
   text-align: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wrapperInput { 
+  margin: 10px 0px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.contentInputButton {
+  margin-top: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.button {
+  min-width: none !important;
+  font-size: 12px !important;
+  margin: 0px 5px !important;
+}
+
+.contentForm {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  margin-right: 400px;
+}
+
+.textInput {
+  width: 100%;
+  margin-top: 5px !important;
+}
+
+.textInput input {
+  padding: 0 !important;
+}
+
+.inputLabel {
+  margin: 0;
+  font-size: 14px;
+  text-align: left;
+  font-weight: 400;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  height: fit-content;
+  width: 300px;
+  background-color: white;
+  border-radius: 5px;
+  transform: 'translate(-50%, -50%)';
+  padding: 10px 20px; 
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.boxBottom {
+  margin-top: 20px;
+}
+
+.resultContent {
+  display: flex;
+  font-size: 14px;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.resultContent p:not(:last-of-type) {
+  margin-right: 10px;
+}
+
+
+
+
+.Sidebar {
+  position: absolute;
+  right: 0;
+  width: 400px;
+  height: 100vh;
+  background-color: white;
+  box-shadow: 1px 1px 1px 1px gray;
+  display: flex;
+  justify-content: center;
+}
+
+.withoutTouristSpot {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxContainer {
+  margin-top: 30px;
+}
+
+.boxContent {
+  display: flex;
+  padding: 10px 10px;
+}
+
+.boxContent p {
+  margin: 0;
+  padding: 0px 2px;
+}
+
+.boxTouristSpot {
+  height: fit-content;
+  background-color: #1565c0;
   color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  padding-right: 5px;
+  width: 300px;
+  margin-top: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+
+.touristSpots {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.buttonTouristSpot {
+  margin: 40px 0;
 }
