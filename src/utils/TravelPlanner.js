@@ -111,8 +111,17 @@ function calcTable(touristSpots, schedule) {
 
         }
     }
+
+    return schedule;
 }
 
-lista = [['violao', 3, 1500], ['radio', 12, 3000], ['notebook', 9, 2000]];
+export default function gateway(touristSpots) {
+    var schedule = buildTable(touristSpots);
+    
+    lastRow = schedule.length-1;
+    lastCol = schedule[0].length-1;
 
-calcTable(lista, buildTable(lista));
+    var newSchedule = calcTable(touristSpots, schedule);
+
+    return getNames(newSchedule[lastRow][lastCol]);
+}
