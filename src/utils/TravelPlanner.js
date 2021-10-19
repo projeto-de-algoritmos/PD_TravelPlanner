@@ -43,7 +43,18 @@ function retrieveRemaining(schedule, i, j, numHoras) {
     return [names, ranking]
 }
 
-function montaTabela(touristSpots, maxHour) {
+function getHighestHour(touristSpots) {
+    var maxHour = -1;
+    for (var touristSpot of touristSpots) {
+        var hour = touristSpot[1];
+        if (hour > maxHour) maxHour = hour;
+    }
+    return maxHour;
+}
+
+function buildTable(touristSpots) {
+    var maxHour = getHighestHour(touristSpots);
+    
     cols = maxHour / 3;
     rows = touristSpots.length;
 
@@ -60,9 +71,10 @@ function montaTabela(touristSpots, maxHour) {
 }
 
 
-function calculaTabela(touristSpots, schedule) {
-    cols = 2;
-    rows = 3;
+function calcTable(touristSpots, schedule) {
+    rows = schedule.length;
+    cols = schedule[0].length;
+
 
     for (var i=0; i<rows; i++) {
         var touristSpot = touristSpots[i];
@@ -82,7 +94,6 @@ function calculaTabela(touristSpots, schedule) {
                     
                     if (j>0) {
                         var remain = retrieveRemaining(schedule, i, j, numHoras);
-                        console.log(remain);
                         remainingRank = getRank(remain);
                     }
 
@@ -100,10 +111,8 @@ function calculaTabela(touristSpots, schedule) {
 
         }
     }
-
-    console.log(schedule);
 }
 
-lista = [['pindamangoiaba', 6, 8], ['laranjeira', 3, 5], ['bolo de abacaxi', 3, 6]];
+lista = [['violao', 3, 1500], ['radio', 12, 3000], ['notebook', 9, 2000]];
 
-calculaTabela(lista, montaTabela(lista, 6));
+calcTable(lista, buildTable(lista));
