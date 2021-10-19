@@ -1,17 +1,3 @@
-**!! Atenção: Renomeie o seu repositório para (Tema)_(NomeDoProjeto). !!** 
-
-Temas:
- - Grafos1
- - Grafos2
- - PD
- - D&C
- - Greed
- - Final 
- 
- **!! *Não coloque os nomes dos alunos no título do repositório*. Exemplo de título correto: Grafos2_Labirinto-do-Minotauro !!**
- 
- (Apague essa seção)
-
 # Travel Planner
 
 **Número da Lista**: 5<br>
@@ -33,7 +19,10 @@ Para solucionar este problema, o Travel Planner surge como um sistema capaz de r
 O Travel Planner é alimentado com o nome das atrações, o período de tempo necessário para realizar todo o passeio e visita nesta atração e o quão o turista está interessado em visitar este lugar traduzido em uma escala de 0 a 10 estrelas.
 
 ## Screenshots
-TODO
+![image](https://user-images.githubusercontent.com/61520601/137831529-ebdc53f2-2a25-41fc-8e57-402beb76b20f.png)
+![image](https://user-images.githubusercontent.com/61520601/137831657-1900312b-facc-48a2-925a-01d1f3cc42d4.png)
+![image](https://user-images.githubusercontent.com/61520601/137831645-2862c3f9-08af-448d-97ff-3adccff857e7.png)
+
 
 ## Instalação 
 **Linguagem**: JavaScript<br>
@@ -64,8 +53,12 @@ ou então
 yarn start
 ```
 
-## Uso 
-TODO
+## Uso
 
-## Outros 
-TODO
+- Coloque o nome da atração turística
+- Coloque o quanto deseja ir para a atração, de 1 a 10
+- Coloque quantas horas a atração gasta
+ - Repita o processo para quantas atrações quiser
+- Clique em calcular melhores atrações
+- Adicione o tempo disponível para as atrações
+- Clique em calcular
