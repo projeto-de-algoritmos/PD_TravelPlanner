@@ -62,3 +62,13 @@ yarn start
 - Clique em calcular melhores atrações
 - Adicione o tempo disponível para as atrações
 - Clique em calcular
+
+## Outros
+
+A etapa de adicionar tempo disponivel foi um desejo da dupla que infelizmente não foi possivel implementar, entretanto o horário máximo disponivel diz respeito a atração adicionada com o maior tempo, ou seja, em uma lista de atrações com:
+
+- Show do Drake - 21h
+- Show da Bey - 8h
+- Show da Katy - 6h
+
+O tempo máximo disponível nessa situação seria de 21h
