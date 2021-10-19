@@ -1,17 +1,46 @@
-getNames = (item) => item[0];
 getName = (item) => item[0][0];
-getRank = (item) => item[1];
+function getNames(item) {
+    if (item == -1) return [];
+    else return item[0];
+}
 
-function concatValues(touristSpotA, touristSpotB) {
+function getRank(item) {
+    if (item[1] == undefined) return 0;
+    else return item[1];
+} 
+
+function concatValues(touristSpotA, touristSpotB=-1) {
     if (touristSpotB == -1) {
         return touristSpotA;
     } else {
         names = getNames(touristSpotA);
-        nominho = getName(touristSpotB);
-        names.push(nominho);
+        nominhos = getNames(touristSpotB);
+
+        for (var nominho of nominhos) {
+            names.push(nominho)
+        }
+
         ranking = getRank(touristSpotA) + getRank(touristSpotB);
         return [names, ranking];
     }
+}
+
+function retrieveRemaining(schedule, i, j, numHoras) {
+    jPos = j - numHoras;
+
+    if (jPos < 0) {
+        return -1;
+    }
+
+    iPos = i - 1;
+    names = getNames(schedule[iPos][jPos]);
+    ranking = getRank(schedule[iPos][jPos]);
+
+    if (names.length == 0) {
+        return -1;
+    }
+
+    return [names, ranking]
 }
 
 function montaTabela(touristSpots, maxHour) {
@@ -31,8 +60,6 @@ function montaTabela(touristSpots, maxHour) {
 }
 
 
-
-// Deve-se esperar um array de tuplas no formato [('nome', numHoras, ranking), ('nome', numHoras, ranking), ('nome', numHoras, ranking)]
 function calculaTabela(touristSpots, schedule) {
     cols = 2;
     rows = 3;
@@ -46,13 +73,21 @@ function calculaTabela(touristSpots, schedule) {
 
         for (var j=0; j<cols; j++) {
             if (i==0) {
-                if (numHoras <= j+1) schedule[i][j] = [[name], ranking];
+                if (numHoras <= j+1) {
+                    schedule[i][j] = [[name], ranking];
+                }
             } else {
                 if (numHoras <= j+1) {
-                    if (getRank(schedule[i-1][j]) < ranking) {
-                        // TODO
-                        // valor do item atual + valor restante = schedule[i][j-numHoras] && getNames(schedule[i][j-numHoras]) != name
-                        schedule[i][j] = [[name], ranking];
+                    var remainingRank = 0;
+                    
+                    if (j>0) {
+                        var remain = retrieveRemaining(schedule, i, j, numHoras);
+                        console.log(remain);
+                        remainingRank = getRank(remain);
+                    }
+
+                    if (getRank(schedule[i-1][j]) < remainingRank + ranking) {
+                        schedule[i][j] = concatValues([[name], ranking], remain);
                     } else {
                         if (schedule[i-1][j] != -1)
                             schedule[i][j] = [getNames(schedule[i-1][j]), getRank(schedule[i-1][j])];
@@ -67,10 +102,8 @@ function calculaTabela(touristSpots, schedule) {
     }
 
     console.log(schedule);
-    console.log(getNames(schedule[0][0]));
 }
 
-lista = [['pindamangoiaba', 3, 4], ['laranjeira', 6, 9], ['bolo de abacaxi', 3, 6]];
+lista = [['pindamangoiaba', 6, 8], ['laranjeira', 3, 5], ['bolo de abacaxi', 3, 6]];
 
 calculaTabela(lista, montaTabela(lista, 6));
-concatValues([["Pindamangoiaba", "Laranjeira"], 8], [["Augusta"], 6]);
